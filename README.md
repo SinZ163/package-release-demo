@@ -1,4 +1,4 @@
-# package-release-demo
+# package-release-demo 2
 
 A reference repo to demonstrate packaging and publishing workflows.
 
