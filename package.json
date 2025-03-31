@@ -12,7 +12,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{ts, yml, yaml, json}": [
+    "**/*.{ts, yml, yaml, json}": [
       "prettier --config ./.prettierrc.json --parser typescript --write"
     ],
     "**/*.ts": [
