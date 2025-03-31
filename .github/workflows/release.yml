@@ -36,13 +36,6 @@ jobs:
 
       - name: Build project
         run: pnpm run build
-      
-      - name: Generate a token
-        id: generate-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
 
       - name: Create and publish versions
         uses: changesets/action@v1
@@ -51,5 +44,5 @@ jobs:
           title: 'chore: update versions'
           publish: pnpm ci:publish
         env:
-          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
