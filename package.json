@@ -7,7 +7,17 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "ci:publish": "pnpm publish -r --access public --publish-branch=main"
+    "ci:publish": "pnpm publish -r --access public --publish-branch=main",
+    "precommit": "lint-staged",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts, yml, yaml, json}": [
+      "prettier --config ./.prettierrc.json --parser typescript --write"
+    ],
+    "**/*.ts": [
+      "eslint --config ./.eslintrc.js --fix --ignore-pattern .gitignore"
+    ]
   },
   "author": "Chris Trewin",
   "license": "Apache-2.0",
@@ -17,6 +27,8 @@
   ],
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3"
   }
 }
